@@ -7,21 +7,34 @@ import (
 
 func TestWriteAliases(t *testing.T) {
 	cases := []struct {
-		aliases []alias
+		aliases aliases
 		want    string
 	}{
 		{
-			[]alias{
-				alias{
-					"testing",
-					[]string{
-						"donald",
-						"walter",
-						"bob",
-					},
+			map[string][]string{
+				"testing": []string{
+					"walter",
+					"mike",
+					"donald",
+				},
+				"also_testing": []string{
+					"joe",
+					"woody",
+					"theo",
+					"jack",
 				},
 			},
-			"testing: donald, walter, bob\n",
+			"also_testing: joe, woody, theo, jack\ntesting: walter, mike, donald\n",
+		},
+		{
+			map[string][]string{
+				"testing": []string{
+					"walter",
+					"bob",
+					"donald",
+				},
+			},
+			"testing: walter, bob, donald\n",
 		},
 	}
 	var b bytes.Buffer
