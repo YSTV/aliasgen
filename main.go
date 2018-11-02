@@ -80,7 +80,7 @@ func main() {
 			email = offShip.Email.String
 		} else {
 			log.Warnf("Officer %s is unfilled or has no email or server name set", offShip.Name)
-                        email = offShip.VacantAlias.String
+			email = offShip.VacantAlias.String
 		}
 		theAliases[offShip.Alias] = append(theAliases[offShip.Alias], email)
 	}
